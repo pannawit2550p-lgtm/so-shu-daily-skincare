@@ -78,7 +78,7 @@
         { "id": "niacinamide", "name": "Niacinamide", "nameTh": "ไนอะซินาไมด์", "image": "assets/ingredient-niacinamide.jpg" },
         { "id": "kojic-acid", "name": "Kojic Acid", "nameTh": "โคจิกแอซิด", "image": "assets/ingredient-kojic-acid.jpg" },
         { "id": "vitamin-c", "name": "Vitamin C", "nameTh": "วิตามินซี", "image": "assets/ingredient-vitamin-c.jpg" },
-        { "id": "vitamin-e", "name": "Vitamin E", "nameTh": "วิตามินอี" }
+        { "id": "vitamin-e", "name": "Vitamin E", "nameTh": "วิตามินอี", "image": "assets/ingredient-vitamin-e.jpg" }
       ],
       "presentation": {
         "model": "pump-bottle",
@@ -130,10 +130,10 @@
       "ingredients": [
         { "id": "rosa-damascena-culture-extract", "name": "Rosa Damascena Culture Extract", "nameTh": "สารสกัดจากดอกโรซา ดามัสเซนา", "image": "assets/ingredient-rosa-damascena.jpg" },
         { "id": "alpha-arbutin", "name": "Alpha Arbutin", "nameTh": "อัลฟ่าอาร์บูติน", "image": "assets/ingredient-alpha-arbutin.jpg" },
-        { "id": "hyaluronic-acid", "name": "Hyaluronic Acid", "nameTh": "ไฮยาลูรอนิกแอซิด", "image": "assets/ingredient-hyaluronic-acid.jpg" },
         { "id": "niacinamide", "name": "Vitamin B3 (Niacinamide)", "nameTh": "วิตามินบี 3 (ไนอะซินาไมด์)", "image": "assets/ingredient-niacinamide.jpg" },
         { "id": "kojic-acid", "name": "Kojic Acid", "nameTh": "โคจิกแอซิด", "image": "assets/ingredient-kojic-acid.jpg" },
-        { "id": "vitamin-c", "name": "Vitamin C", "nameTh": "วิตามินซี", "image": "assets/ingredient-vitamin-c.jpg" }
+        { "id": "vitamin-c", "name": "Vitamin C", "nameTh": "วิตามินซี", "image": "assets/ingredient-vitamin-c.jpg" },
+        { "id": "hyaluronic-acid", "name": "Hyaluronic Acid", "nameTh": "ไฮยาลูรอนิกแอซิด", "image": "assets/ingredient-hyaluronic-acid.jpg" }
       ],
       "variants": [
         {

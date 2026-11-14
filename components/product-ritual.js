@@ -27,16 +27,15 @@
       function productName(product){return window.SoShuI18n?window.SoShuI18n.name(product):product.name||product.id}
       function clampBetween(value,min,max){return Math.max(min,Math.min(max,value))}
       function targetCenter(){
-        var width=stage.clientWidth,mobile=width<=700,left=mobile?10:Math.max(14,Math.min(width*.03,48)),right=mobile?10:Math.max(28,Math.min(width*.075,120));
-        return {x:mobile?width*(width<=380 ? .39 : .4):width*.5-(right-left)*.5,y:stage.clientHeight*(mobile ? .51 : .55)};
+        var width=stage.clientWidth,mobile=width<=700;
+        return {x:width*.5,y:stage.clientHeight*(mobile ? (width<=380 ? .48 : .44) : .55)};
       }
       function previewMetrics(product){
         var width=stage.clientWidth,height=stage.clientHeight,mobile=width<=700,medium=width<=1000;
-        var left=mobile?clampBetween(width*.11,width<=380?34:46,width<=380?52:76):medium?clampBetween(width*.08,68,110):clampBetween(width*.08,76,156);
-        var boxWidth=mobile?clampBetween(width*(width<=380 ? .21 : .24),width<=380?68:82,width<=380?88:118):medium?clampBetween(width*.15,100,170):clampBetween(width*.14,110,220);
-        var isJar=product&&product.presentation&&product.presentation.model==="cream-jar";
-        var boxHeight=mobile?clampBetween(height*(isJar?(width<=380 ? .1 : .11):(width<=380 ? .12 : .14)),isJar?(width<=380?58:62):(width<=380?64:72),isJar?(width<=380?72:82):(width<=380?82:100)):medium?Math.min(height*.19,160):Math.min(height*.23,190);
-        return {x:left+boxWidth*.5,y:mobile?height*(width<=380 ? .84 : .82):height*.55,width:boxWidth,height:boxHeight};
+        var boxWidth=mobile?clampBetween(width*.16,width<=380?52:58,width<=380?60:68):medium?clampBetween(width*.15,100,170):clampBetween(width*.14,110,220);
+        var boxHeight=mobile?clampBetween(height*.09,54,70):medium?Math.min(height*.19,160):Math.min(height*.23,190);
+        var x=mobile?clampBetween(width*.13,width<=380?40:50,width<=380?50:58):clampBetween(width*.08,medium?68:76,medium?110:156);
+        return {x:x,y:mobile?height*(width<=380?.61:.64):height*.55,width:boxWidth,height:boxHeight};
       }
       function getNode(index){return productNodes[(index+productNodes.length)%productNodes.length]}
       function scaleAtPreview(node,product){
@@ -91,6 +90,7 @@
           var item=document.createElement("li"),name=document.createElement("strong");
           item.className="ritual__ingredient";item.dataset.index=String(index);item.setAttribute("aria-hidden","true");
           if(entry.image){var image=document.createElement("img");image.className="ritual__ingredient-image";image.alt="";image.loading="lazy";image.decoding="async";image.src=entry.image;item.append(image)}
+          else{var placeholder=document.createElement("span");placeholder.className="ritual__ingredient-image ritual__ingredient-image--placeholder";placeholder.setAttribute("aria-hidden","true");item.append(placeholder)}
           name.className="ritual__ingredient-name";name.textContent=window.SoShuI18n?window.SoShuI18n.name(entry):entry.name;item.append(name);ingredientList.append(item);return item;
         });
       }
@@ -174,17 +174,26 @@
         requestRender();
       }
       function updateIngredientPositions(now){
-        var width=stage.clientWidth,mobile=width<=700,itemWidth=mobile?Math.min(Math.max(width*.32,width<=380?112:0),width<=380?124:136):width<=1000?Math.min(width*.3,280):Math.min(width*.26,340);
-        var targetOffsetX=mobile?width*(width<=380 ? .49 : .47):Math.min(width*.31,560),startOffsetX=mobile?width*.05:Math.min(110,width*.07),topY=stage.clientHeight*.2,bottomY=stage.clientHeight*(mobile ? .73 : .8);
+        var width=stage.clientWidth,height=stage.clientHeight,mobile=width<=700,columns=width<=360?2:3;
+        var itemWidth=mobile?Math.min((width-28-(columns-1)*8)/columns,136):width<=1000?Math.min(width*.3,280):Math.min(width*.26,340);
+        var targetTop=height*(width<=360?.68:.73),targetBottom=height*.95,rowCount=Math.max(1,Math.ceil(ingredientItems.length/columns)),rowGap=(targetBottom-targetTop)/rowCount,startOffsetX=mobile?width*.04:Math.min(110,width*.07),topY=height*.2,bottomY=height*.8;
         var formulaProgress=transitionPhase==="ingredients-exit"?formulaExitProgress:formulaAnimationStartedAt?(reduced?1:clamp((now-formulaAnimationStartedAt)/1350)):0;
         ingredientItems.forEach(function(item,index){
-          var start=.05+index*.14,fly=reduced?1:smooth((formulaProgress-start)/.28),rowGap=(bottomY-topY)/Math.max(1,ingredientItems.length),targetY=topY+rowGap*(index+.5),startY=stage.clientHeight*.5;
-          var x=startOffsetX+(targetOffsetX-startOffsetX)*fly,yOffset=(startY-stage.clientHeight*.5)+(targetY-startY)*fly+Math.sin(fly*Math.PI)*(index%2?-22:22),scale=.88+.12*fly,opacity=fly;
+          var start=.05+index*.14,fly=reduced?1:smooth((formulaProgress-start)/.28),startY=height*.5,targetY,targetX;
+          if(mobile){
+            var row=Math.floor(index/columns),rowStart=row*columns,itemsInRow=Math.min(columns,ingredientItems.length-rowStart),column=index-rowStart,rowWidth=itemsInRow*itemWidth+(itemsInRow-1)*8;
+            targetX=(width-rowWidth)*.5+itemWidth*.5+column*(itemWidth+8)-width*.5;
+            targetY=targetTop+rowGap*(row+.5);
+          }else{
+            var desktopGap=(bottomY-topY)/Math.max(1,ingredientItems.length);
+            targetX=Math.min(width*.31,560);targetY=topY+desktopGap*(index+.5);
+          }
+          var x=startOffsetX+(targetX-startOffsetX)*fly,yOffset=(startY-height*.5)+(targetY-startY)*fly+Math.sin(fly*Math.PI)*(index%2?-8:8),scale=mobile ? .96+.04*fly : .88+.12*fly,opacity=fly;
           if(transitionPhase==="ingredients-exit"){
             var exitProgress=smooth((now-phaseStartedAt-index*38)/250);opacity=(formulaExitOpacities[index]||0)*(1-exitProgress);
           }
           item.style.width=itemWidth.toFixed(1)+"px";item.style.opacity=String(opacity);
-          item.style.transform="translate3d("+x.toFixed(1)+"px,"+yOffset.toFixed(1)+"px,0) translate("+(mobile?"-100%":"-50%")+",-50%) scale("+scale.toFixed(3)+")";
+          item.style.transform="translate3d("+x.toFixed(1)+"px,"+yOffset.toFixed(1)+"px,0) translate(-50%,-50%) scale("+scale.toFixed(3)+")";
           item.setAttribute("aria-hidden",opacity>.02?"false":"true");
         });
       }
@@ -240,7 +249,9 @@
       }
       window.addEventListener("resize",function(){
         if(!productNodes.length)return;
-        if(transitionPhase==="idle"||transitionPhase==="formula-enter")setStableProductPositions();
+        if(transitionPhase==="idle"||transitionPhase==="formula-enter"){
+          setStableProductPositions();updateIngredientPositions(performance.now());
+        }
         else requestRender();
       },{passive:true});
       render();
