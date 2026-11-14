@@ -41,13 +41,26 @@ so-shu-product-ritual{display:block}
   .ritual__title{font-size:clamp(24px,7vw,40px);line-height:.98}
   .ritual__title--long{font-size:clamp(21px,5.4vw,32px);line-height:1}
   .ritual__hint{margin-top:12px;font-size:9px}
-  .ritual__product-visual{height:min(50vh,380px)}
-  .ritual__product-visual--jar{width:min(82vw,390px);height:min(34vh,260px)}
+  .ritual__product-visual{height:min(42vh,300px)}
+  .ritual__product-visual--jar{width:min(50vw,205px);height:min(28vh,205px)}
   .ritual__ingredient{gap:6px}
   .ritual__ingredient-image{flex-basis:48px;width:48px;height:48px;border-width:1px}
   .ritual__ingredient-name{font-size:clamp(9px,2.7vw,11px);letter-spacing:.025em;line-height:1.2}
   .ritual__side-arrow{top:55%;bottom:auto;width:46px;height:46px;font-size:20px}
   .ritual__side-arrow--prev{left:12px;right:auto}
   .ritual__side-arrow--next{left:auto;right:12px}
+}
+@media(max-width:380px){
+  .ritual__copy{top:5vh;left:14px;max-width:68vw}
+  .ritual__title{font-size:clamp(22px,6.4vw,28px)}
+  .ritual__title--long{font-size:clamp(19px,5.4vw,24px)}
+  .ritual__product-visual{height:min(37vh,220px)}
+  .ritual__product-visual--jar{width:min(46vw,150px);height:min(25vh,145px)}
+  .ritual__ingredient{gap:5px}
+  .ritual__ingredient-image{flex-basis:38px;width:38px;height:38px}
+  .ritual__ingredient-name{font-size:9px;letter-spacing:0;line-height:1.12}
+  .ritual__side-arrow{width:38px;height:38px;font-size:17px}
+  .ritual__side-arrow--prev{left:8px}
+  .ritual__side-arrow--next{right:8px}
 }
 @media(prefers-reduced-motion:reduce){.ritual__copy,.ritual__product-visual,.ritual__ingredient{will-change:auto}}

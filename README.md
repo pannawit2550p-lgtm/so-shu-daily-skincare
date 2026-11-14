@@ -4,7 +4,7 @@ A responsive skincare storefront and visual product portfolio for SO-SHU. The ex
 
 ## Live site
 
-The GitHub Pages URL will appear here after the first deployment completes.
+[Open the live SO-SHU site](https://pannawit2550p-lgtm.github.io/so-shu-daily-skincare/).
 
 ## Preview locally
 

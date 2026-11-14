@@ -27,15 +27,16 @@
       function productName(product){return window.SoShuI18n?window.SoShuI18n.name(product):product.name||product.id}
       function clampBetween(value,min,max){return Math.max(min,Math.min(max,value))}
       function targetCenter(){
-        var mobile=stage.clientWidth<=700,left=mobile?10:Math.max(14,Math.min(stage.clientWidth*.03,48)),right=mobile?10:Math.max(28,Math.min(stage.clientWidth*.075,120));
-        return {x:stage.clientWidth*.5-(right-left)*.5,y:stage.clientHeight*.55};
+        var width=stage.clientWidth,mobile=width<=700,left=mobile?10:Math.max(14,Math.min(width*.03,48)),right=mobile?10:Math.max(28,Math.min(width*.075,120));
+        return {x:mobile?width*(width<=380 ? .39 : .4):width*.5-(right-left)*.5,y:stage.clientHeight*(mobile ? .51 : .55)};
       }
       function previewMetrics(product){
         var width=stage.clientWidth,height=stage.clientHeight,mobile=width<=700,medium=width<=1000;
-        var left=mobile?clampBetween(width*.11,46,76):medium?clampBetween(width*.08,68,110):clampBetween(width*.08,76,156);
-        var boxWidth=mobile?clampBetween(width*.24,82,118):medium?clampBetween(width*.15,100,170):clampBetween(width*.14,110,220);
-        var boxHeight=mobile?clampBetween(height*(product&&product.presentation&&product.presentation.model==="cream-jar"?.13:.17),product&&product.presentation&&product.presentation.model==="cream-jar"?70:85,product&&product.presentation&&product.presentation.model==="cream-jar"?96:125):medium?Math.min(height*.19,160):Math.min(height*.23,190);
-        return {x:left+boxWidth*.5,y:height*.55,width:boxWidth,height:boxHeight};
+        var left=mobile?clampBetween(width*.11,width<=380?34:46,width<=380?52:76):medium?clampBetween(width*.08,68,110):clampBetween(width*.08,76,156);
+        var boxWidth=mobile?clampBetween(width*(width<=380 ? .21 : .24),width<=380?68:82,width<=380?88:118):medium?clampBetween(width*.15,100,170):clampBetween(width*.14,110,220);
+        var isJar=product&&product.presentation&&product.presentation.model==="cream-jar";
+        var boxHeight=mobile?clampBetween(height*(isJar?(width<=380 ? .1 : .11):(width<=380 ? .12 : .14)),isJar?(width<=380?58:62):(width<=380?64:72),isJar?(width<=380?72:82):(width<=380?82:100)):medium?Math.min(height*.19,160):Math.min(height*.23,190);
+        return {x:left+boxWidth*.5,y:mobile?height*(width<=380 ? .84 : .82):height*.55,width:boxWidth,height:boxHeight};
       }
       function getNode(index){return productNodes[(index+productNodes.length)%productNodes.length]}
       function scaleAtPreview(node,product){
@@ -43,10 +44,11 @@
         return clampBetween(Math.min(box.width/width,box.height/height),.12,.55);
       }
       function readEntryOrigin(node,mirror,product){
-        var rect=node&&node.element.getBoundingClientRect(),stageRect=stage.getBoundingClientRect(),center=targetCenter(),metrics=previewMetrics(product);
+        var rect=node&&node.element.getBoundingClientRect(),stageRect=stage.getBoundingClientRect(),metrics=previewMetrics(product);
         var x=rect&&rect.width?rect.left+rect.width*.5-stageRect.left:metrics.x;
         if(mirror)x=stage.clientWidth-x;
-        return {x:x,y:center.y,scale:node?scaleAtPreview(node,product):.22};
+        var y=rect&&rect.height?rect.top+rect.height*.5-stageRect.top:metrics.y;
+        return {x:x,y:y,scale:node?scaleAtPreview(node,product):.22};
       }
       function placeNode(node,x,y,scale,opacity,z){
         var element=node.element,baseX=element.offsetLeft+element.offsetWidth*.5,baseY=element.offsetTop+element.offsetHeight*.5;
@@ -172,8 +174,8 @@
         requestRender();
       }
       function updateIngredientPositions(now){
-        var mobile=stage.clientWidth<=700,itemWidth=mobile?Math.min(stage.clientWidth*.37,160):stage.clientWidth<=1000?Math.min(stage.clientWidth*.3,280):Math.min(stage.clientWidth*.26,340);
-        var targetOffsetX=mobile?stage.clientWidth*.29:Math.min(stage.clientWidth*.31,560),startOffsetX=mobile?stage.clientWidth*.04:Math.min(110,stage.clientWidth*.07),topY=stage.clientHeight*.2,bottomY=stage.clientHeight*.8;
+        var width=stage.clientWidth,mobile=width<=700,itemWidth=mobile?Math.min(Math.max(width*.32,width<=380?112:0),width<=380?124:136):width<=1000?Math.min(width*.3,280):Math.min(width*.26,340);
+        var targetOffsetX=mobile?width*(width<=380 ? .49 : .47):Math.min(width*.31,560),startOffsetX=mobile?width*.05:Math.min(110,width*.07),topY=stage.clientHeight*.2,bottomY=stage.clientHeight*(mobile ? .73 : .8);
         var formulaProgress=transitionPhase==="ingredients-exit"?formulaExitProgress:formulaAnimationStartedAt?(reduced?1:clamp((now-formulaAnimationStartedAt)/1350)):0;
         ingredientItems.forEach(function(item,index){
           var start=.05+index*.14,fly=reduced?1:smooth((formulaProgress-start)/.28),rowGap=(bottomY-topY)/Math.max(1,ingredientItems.length),targetY=topY+rowGap*(index+.5),startY=stage.clientHeight*.5;
@@ -182,7 +184,7 @@
             var exitProgress=smooth((now-phaseStartedAt-index*38)/250);opacity=(formulaExitOpacities[index]||0)*(1-exitProgress);
           }
           item.style.width=itemWidth.toFixed(1)+"px";item.style.opacity=String(opacity);
-          item.style.transform="translate3d("+x.toFixed(1)+"px,"+yOffset.toFixed(1)+"px,0) translate(-50%,-50%) scale("+scale.toFixed(3)+")";
+          item.style.transform="translate3d("+x.toFixed(1)+"px,"+yOffset.toFixed(1)+"px,0) translate("+(mobile?"-100%":"-50%")+",-50%) scale("+scale.toFixed(3)+")";
           item.setAttribute("aria-hidden",opacity>.02?"false":"true");
         });
       }
