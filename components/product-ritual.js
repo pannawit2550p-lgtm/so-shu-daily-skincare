@@ -44,6 +44,7 @@
       }
       function readEntryOrigin(node,mirror,product){
         var rect=node&&node.element.getBoundingClientRect(),stageRect=stage.getBoundingClientRect(),metrics=previewMetrics(product);
+        if(stage.clientWidth<=700)return {x:mirror?stage.clientWidth-metrics.x:metrics.x,y:metrics.y,scale:node?scaleAtPreview(node,product):.22};
         var x=rect&&rect.width?rect.left+rect.width*.5-stageRect.left:metrics.x;
         if(mirror)x=stage.clientWidth-x;
         var y=rect&&rect.height?rect.top+rect.height*.5-stageRect.top:metrics.y;
@@ -62,9 +63,11 @@
           var activeNode=getNode(activeProductIndex),activeProduct=products[activeProductIndex];
           activeNode.element.disabled=false;activeNode.element.tabIndex=0;activeNode.element.setAttribute("aria-hidden","false");
           activeNode.element.setAttribute("aria-label",(window.SoShuI18n?window.SoShuI18n.t("view"):"View")+": "+productName(activeProduct));
-          var nextNode=getNode(activeProductIndex+1),nextProduct=products[(activeProductIndex+1)%products.length];
-          nextNode.element.disabled=false;nextNode.element.tabIndex=0;nextNode.element.setAttribute("aria-hidden","false");
-          nextNode.element.setAttribute("aria-label",(window.SoShuI18n?window.SoShuI18n.t("nextProduct"):"Preview next product")+": "+productName(nextProduct));
+          if(stage.clientWidth>700){
+            var nextNode=getNode(activeProductIndex+1),nextProduct=products[(activeProductIndex+1)%products.length];
+            nextNode.element.disabled=false;nextNode.element.tabIndex=0;nextNode.element.setAttribute("aria-hidden","false");
+            nextNode.element.setAttribute("aria-label",(window.SoShuI18n?window.SoShuI18n.t("nextProduct"):"Preview next product")+": "+productName(nextProduct));
+          }
         }
       }
       function setProductHeading(index){
@@ -75,11 +78,11 @@
       }
       function setStableProductPositions(){
         if(activeProductIndex<0||!productNodes.length)return;
-        var center=targetCenter(),nextIndex=(activeProductIndex+1)%products.length,preview=previewMetrics(products[nextIndex]);
+        var mobile=stage.clientWidth<=700,center=targetCenter(),nextIndex=(activeProductIndex+1)%products.length,preview=previewMetrics(products[nextIndex]);
         productNodes.forEach(function(node,index){
           var product=products[index],element=node.element;
           if(index===activeProductIndex){placeNode(node,center.x,center.y,1,1,5);element.classList.add("is-active");element.classList.remove("is-preview")}
-          else if(index===nextIndex){placeNode(node,preview.x,preview.y,scaleAtPreview(node,product),1,4);element.classList.add("is-preview");element.classList.remove("is-active")}
+          else if(index===nextIndex&&!mobile){placeNode(node,preview.x,preview.y,scaleAtPreview(node,product),1,4);element.classList.add("is-preview");element.classList.remove("is-active")}
           else{placeNode(node,stage.clientWidth+element.offsetWidth,center.y,.18,0,1);element.classList.remove("is-active","is-preview")}
         });
         setControlsLocked(false);
@@ -137,7 +140,7 @@
             {node:outgoing,from:{x:center.x,y:center.y,scale:1,opacity:1},to:{x:stage.clientWidth+outgoing.element.offsetWidth*.55,y:center.y,scale:outgoingScale,opacity:1},z:4},
             {node:incoming,from:{x:incomingOrigin.x,y:incomingOrigin.y,scale:incomingOrigin.scale,opacity:1},to:{x:center.x,y:center.y,scale:1,opacity:1},z:5}
           ];
-          if(products.length>2&&refillIndex!==fromIndex&&refillIndex!==toIndex){
+          if(stage.clientWidth>700&&products.length>2&&refillIndex!==fromIndex&&refillIndex!==toIndex){
             var refillScale=scaleAtPreview(refill,products[refillIndex]);
             swapPlans.push({node:refill,from:{x:left.x,y:left.y,scale:.08,opacity:1},to:{x:left.x,y:left.y,scale:refillScale,opacity:1},z:7,delay:.34,end:.72});
           }
@@ -147,7 +150,7 @@
             {node:outgoing,from:{x:center.x,y:center.y,scale:1,opacity:1},to:{x:left.x,y:left.y,scale:outgoingScale,opacity:1},z:5},
             {node:incoming,from:{x:stage.clientWidth-incomingMetrics.x,y:center.y,scale:incomingOrigin.scale,opacity:1},to:{x:center.x,y:center.y,scale:1,opacity:1},z:6}
           ];
-          if(products.length>2&&oldPreview!==outgoing&&oldPreview!==incoming){
+          if(stage.clientWidth>700&&products.length>2&&oldPreview!==outgoing&&oldPreview!==incoming){
             swapPlans.push({node:oldPreview,from:{x:left.x,y:left.y,scale:scaleAtPreview(oldPreview,products[(fromIndex+1)%products.length]),opacity:1},to:{x:-oldPreview.element.offsetWidth*.55,y:left.y,scale:.14,opacity:0},z:3});
           }
         }
@@ -176,7 +179,8 @@
       function updateIngredientPositions(now){
         var width=stage.clientWidth,height=stage.clientHeight,mobile=width<=700,columns=width<=360?2:3;
         var itemWidth=mobile?Math.min((width-28-(columns-1)*8)/columns,136):width<=1000?Math.min(width*.3,280):Math.min(width*.26,340);
-        var targetTop=height*(width<=360?.68:.73),targetBottom=height*.95,rowCount=Math.max(1,Math.ceil(ingredientItems.length/columns)),rowGap=(targetBottom-targetTop)/rowCount,startOffsetX=mobile?width*.04:Math.min(110,width*.07),topY=height*.2,bottomY=height*.8;
+        var activeProduct=products[activeProductIndex],isJar=activeProduct&&activeProduct.presentation&&activeProduct.presentation.model==="cream-jar";
+        var targetTop=height*(mobile?(width<=360?(isJar ? .65 : .68):(isJar ? .57 : .63)):.73),targetBottom=height*(mobile?(width<=360?(isJar ? .94 : .96):(isJar ? .79 : .85)):.95),rowCount=Math.max(1,Math.ceil(ingredientItems.length/columns)),rowGap=(targetBottom-targetTop)/rowCount,startOffsetX=mobile?width*.04:Math.min(110,width*.07),topY=height*.2,bottomY=height*.8;
         var formulaProgress=transitionPhase==="ingredients-exit"?formulaExitProgress:formulaAnimationStartedAt?(reduced?1:clamp((now-formulaAnimationStartedAt)/1350)):0;
         ingredientItems.forEach(function(item,index){
           var start=.05+index*.14,fly=reduced?1:smooth((formulaProgress-start)/.28),startY=height*.5,targetY,targetX;
