@@ -1,0 +1,28 @@
+/* ProductLine and SizePicker */
+.slip__lines{flex:1 1 auto;min-height:0;margin:0;padding:0 24px;list-style:none;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.line{position:relative;display:grid;grid-template-columns:24px minmax(0,1fr) auto;grid-template-areas:"n name price" "n kind add";align-items:center;gap:4px 8px;padding:12px 0;border-bottom:1px dashed #000}
+.line__thumb{display:none}
+.line.has-image{grid-template-columns:24px 48px minmax(0,1fr) auto;grid-template-areas:"n thumb name price" "n thumb kind add"}
+.line.has-image .line__thumb{grid-area:thumb;display:grid;place-items:center;width:48px;height:52px;overflow:hidden;border-radius:3px;background:#fbf5f8}
+.line__thumb img{display:block;width:100%;height:100%;object-fit:contain}
+.line:before{content:"0" attr(data-p);grid-area:n;align-self:start;font-size:12px;line-height:16px;font-variant-numeric:tabular-nums}
+.line:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:#000;transform-origin:0 50%;transform:scaleX(0);transition:transform .9s var(--ease)}
+.line.is-hot:after{transform:scaleX(1)}
+.line__name{grid-area:name;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px;line-height:16px;text-transform:uppercase}
+.line__price{grid-area:price;text-align:right;font-size:12px;line-height:16px;font-variant-numeric:tabular-nums}
+.line__kind{grid-area:kind;color:var(--muted);text-transform:capitalize}
+.line__add{grid-area:add;justify-self:end;height:24px;padding:0 8px;border:1px dashed #000;border-radius:999px;font-size:12px;line-height:16px;text-transform:uppercase;transition:background-color .3s,color .3s}
+.line__add:after{content:"Add"}
+.line.is-picking .line__add:after{content:"Close"}
+.line.is-added .line__add{background:#000;color:#fff;border-style:solid;cursor:default}
+.line.is-added .line__add:after{content:"In bag"}
+.line.is-pending{opacity:.65}
+.pick{display:none}
+.line.is-picking .pick{grid-column:1/-1;display:flex;flex-direction:column;gap:8px;padding-top:8px;animation:drop .7s var(--ease)}
+@keyframes drop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.pick__sizes{display:flex;flex-wrap:wrap;gap:8px}
+.size{min-width:40px;min-height:28px;padding:0 12px;border:1px dashed #000;border-radius:999px;font-size:12px;line-height:16px;text-transform:uppercase;transition:background-color .3s,color .3s,transform .45s var(--spring)}
+.size[aria-pressed="true"]{background:#000;color:#fff;border-style:solid}
+.size:active{transform:scale(.94)}
+.pick__ok{width:100%;min-height:32px;background:#000;color:#fff;font-size:12px;line-height:16px;text-transform:uppercase}
+@media (max-width:809px){.slip__lines{padding:0 20px}.line{padding:9px 0}}

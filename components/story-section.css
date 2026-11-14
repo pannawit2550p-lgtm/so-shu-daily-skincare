@@ -1,0 +1,37 @@
+/* StorySection */
+.story-section{min-height:100svh;display:grid;grid-template-rows:1fr;padding:14px clamp(20px,3.2vw,52px) 18px;overflow:hidden;background:linear-gradient(112deg,#faeaf1 0%,#fff 46%,#fff7fa 67%,#f3c8dc 100%);color:#39283b}
+.story__main{display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.8fr);align-items:center;gap:clamp(28px,5vw,90px);padding:5vh 0 6vh}
+.story__eyebrow{margin:0 0 18px;color:#725e76}
+.story__intro h2{max-width:420px;margin:0;font-size:clamp(30px,3.8vw,58px);line-height:.98;font-weight:400;letter-spacing:-.06em;color:#382b3b}
+.story__intro h2 i{font-family:"Instrument Serif","Prompt",Georgia,serif;font-weight:400;color:#c876ad}
+.story__lines{min-width:0;transform:translateX(clamp(0px,1.5vw,24px))}
+.story__line{margin:0;white-space:nowrap;font-size:clamp(42px,6vw,88px);line-height:.98;font-weight:600;letter-spacing:.05em;transition:opacity .85s var(--ease),transform .95s var(--ease),color .85s var(--ease)}
+.story__line+ .story__line{margin-top:clamp(14px,1.4vw,24px)}
+.story__line i{font-family:var(--font);font-style:normal;font-weight:600;font-size:1em;letter-spacing:inherit}
+.story__line--one{color:#513d55}
+.story__line--one i{color:#d276b0}
+.story__line--two{color:#806b84}
+.story__line--two i{color:#987c9a}
+.story__line--three{color:#b7aab9}
+.story__line--three i{color:#b7aab9}
+.story-section.has-reveal .story__intro,.story-section.has-reveal .story__line{opacity:0;transform:translateY(18px)}
+.story-section.is-visible .story__intro,.story-section.is-visible .story__line{opacity:1;transform:translateY(0)}
+.story-section.is-visible .story__line--one{transition-delay:.08s}
+.story-section.is-visible .story__line--two{transition-delay:.2s}
+.story-section.is-visible .story__line--three{transition-delay:.32s}
+@media(max-width:1000px){
+  .story__main{grid-template-columns:minmax(180px,.65fr) minmax(0,1.7fr);gap:28px}
+  .story__line{font-size:clamp(38px,6.1vw,70px)}
+}
+@media(max-width:700px){
+  .story-section{min-height:100svh;padding:12px 16px 16px}
+  .story__main{grid-template-columns:1fr;align-content:center;gap:34px;padding:7vh 0}
+  .story__eyebrow{margin-bottom:12px}
+  .story__intro h2{font-size:clamp(34px,8vw,48px)}
+  .story__line{font-size:clamp(32px,8.5vw,58px);letter-spacing:.025em}
+  .story__lines{transform:none}
+  .story__line+ .story__line{margin-top:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .story-section.has-reveal .story__intro,.story-section.has-reveal .story__line{opacity:1;transform:none}
+}

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "looks": [
+    {
+      "id": "LOOK-01",
+      "slug": "somewhere-else",
+      "name": "Somewhere Else",
+      "nameTh": "ที่ไหนสักแห่ง",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    },
+    {
+      "id": "LOOK-02",
+      "slug": "dial-up",
+      "name": "Dial-Up",
+      "nameTh": "โทรออก",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    },
+    {
+      "id": "LOOK-03",
+      "slug": "long-walks",
+      "name": "Long Walks",
+      "nameTh": "เดินเล่นไกล",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    },
+    {
+      "id": "LOOK-04",
+      "slug": "low-battery",
+      "name": "Low Battery",
+      "nameTh": "แบตเตอรี่ต่ำ",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    },
+    {
+      "id": "LOOK-05",
+      "slug": "no-reply",
+      "name": "No Reply",
+      "nameTh": "ไม่ตอบกลับ",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    },
+    {
+      "id": "LOOK-06",
+      "slug": "analog",
+      "name": "Analog",
+      "nameTh": "อะนาล็อก",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    },
+    {
+      "id": "LOOK-07",
+      "slug": "rewind",
+      "name": "Rewind",
+      "nameTh": "ย้อนกลับ",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    },
+    {
+      "id": "LOOK-08",
+      "slug": "out-of-office",
+      "name": "Out Of Office",
+      "nameTh": "ไม่อยู่ที่ทำงาน",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    },
+    {
+      "id": "LOOK-09",
+      "slug": "paper-maps",
+      "name": "Paper Maps",
+      "nameTh": "แผนที่กระดาษ",
+      "foot": 0,
+      "productIds": [
+        "SHU-0804",
+        "SHU-0805",
+        "SHU-0806"
+      ]
+    }
+  ]
+}

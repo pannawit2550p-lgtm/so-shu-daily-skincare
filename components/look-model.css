@@ -1,0 +1,12 @@
+/* LookModel */
+.model{position:absolute;left:0;bottom:0;width:var(--model-w,320px);transform-origin:50% 100%;opacity:0}
+.deck.is-moving .model{will-change:transform,opacity}
+.model__fig{position:relative;width:100%;height:var(--model-h,560px);aspect-ratio:4/7;transition:opacity .5s var(--ease)}
+.model__shadow{position:absolute;left:-12%;right:-12%;bottom:-3%;height:16%;pointer-events:none;filter:blur(3px);background:radial-gradient(22% 20% at 50% 82%,rgba(0,0,0,.42),rgba(0,0,0,0) 72%),radial-gradient(42% 32% at 50% 80%,rgba(0,0,0,.16),rgba(0,0,0,0) 74%),radial-gradient(40% 55% at 34% 46%,rgba(0,0,0,.07),rgba(0,0,0,0) 72%)}
+.model__pic{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 100%;pointer-events:none;-webkit-user-drag:none;transform:translateY(calc(var(--foot,0)*100%))}
+.model__hit{position:absolute;inset:6% 18% 0;border-radius:24px}
+.deck.is-grid:has(.model__hit:hover) .model:not(:has(.model__hit:hover)) .model__fig{opacity:.35}
+.deck.is-anim .model{transition:transform 1.25s var(--morph) var(--d),opacity .8s var(--ease) var(--d),filter .8s var(--ease) var(--d)}
+.deck.is-anim.is-leaving-grid .model{transition-duration:1.25s,.8s,.8s}
+.deck.is-grid .model__hit{inset:0 12% 0}
+@media (hover:hover) and (pointer:fine){.deck.is-grid .model:not(:has(.model__hit:hover)) .model__fig{transition:opacity .5s var(--ease)}}

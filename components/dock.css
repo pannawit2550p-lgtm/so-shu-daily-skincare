@@ -1,0 +1,30 @@
+/* dock */
+.dock{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:flex-end;justify-content:space-between;padding:0 32px 32px;pointer-events:none;transition:opacity .7s var(--ease) .2s}
+.dock>*{pointer-events:auto}
+.dock__now{display:flex;flex-direction:column;gap:8px;min-width:0;transition:opacity .4s}
+.dock__count{display:flex;align-items:center;gap:12px}
+.auto{width:24px;height:24px;display:grid;place-items:center;border:1px dashed #000;border-radius:50%;transition:background-color .3s,color .3s}
+.auto:hover{background:#000;color:#fff}
+.auto svg{width:12px;height:12px;fill:currentColor}
+.auto .play{display:none}
+.auto[aria-pressed="false"] .pause{display:none}.auto[aria-pressed="false"] .play{display:block}
+.dock__name{max-width:min(55vw,500px);overflow:hidden;text-overflow:ellipsis;font-size:32px;line-height:32px;font-weight:300;letter-spacing:-.05em;text-transform:uppercase;white-space:nowrap}
+.dock__now.is-swap .dock__name{animation:swap .8s var(--ease) both}
+@keyframes swap{from{opacity:0;filter:blur(4px);transform:translateY(16px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
+.dock__shop{display:inline-flex;align-items:center;gap:16px;margin-left:auto;transition:opacity .4s}
+.dock__dot{width:64px;height:64px;display:grid;place-items:center;border-radius:50%;background:#000;color:#fff;transition:transform .6s var(--spring)}
+.dock__dot svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;transition:transform .6s var(--ease)}
+.dock__shop:hover .dock__dot{transform:scale(1.08)}.dock__shop:hover .dock__dot svg{transform:rotate(90deg)}
+.deck.is-grid .dock__now,.deck.is-grid .dock__shop{opacity:0;pointer-events:none}
+.deck.is-focus .dock{opacity:0;pointer-events:none;transition-duration:.35s}
+@media (max-width:1199px){
+.dock__name{font-size:24px;line-height:24px}
+}
+@media (max-width:809px){
+.dock{padding:0 16px 24px}
+.dock__now{gap:6px}
+.dock__name{max-width:calc(100vw - 112px);font-size:16px;line-height:16px;letter-spacing:-.02em}
+.dock__shop{gap:8px}
+.dock__shop .cap{display:none}
+.dock__dot{width:48px;height:48px}
+}

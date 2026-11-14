@@ -1,0 +1,8 @@
+node_modules/
+.runtime/
+.playwright-cli/
+output/playwright/
+dist/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

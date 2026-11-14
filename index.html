@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ececec">
+  <meta name="description" content="So-Shu daily skincare. Explore the products and find your glow.">
+  <title>SO-SHU — Stay in your glow</title>
+  <link rel="icon" type="image/png" href="assets/so-shu-logo.png">
+  <link rel="apple-touch-icon" href="assets/so-shu-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="components/status-bar.css">
+  <link rel="stylesheet" href="components/lookbook-stage.css">
+  <link rel="stylesheet" href="components/dock.css">
+  <link rel="stylesheet" href="components/look-controls.css">
+  <link rel="stylesheet" href="components/focus-view.css">
+  <link rel="stylesheet" href="components/product-slip.css">
+  <link rel="stylesheet" href="components/look-model.css">
+  <link rel="stylesheet" href="components/product-line.css">
+  <link rel="stylesheet" href="components/price-card.css">
+  <link rel="stylesheet" href="components/toast.css">
+  <link rel="stylesheet" href="components/story-section.css">
+  <link rel="stylesheet" href="components/product-ritual.css">
+  <link rel="stylesheet" href="components/cart-drawer.css">
+  <link rel="stylesheet" href="components/site-footer.css">
+  <link rel="stylesheet" href="components/thai-font.css">
+</head>
+<body>
+  <so-shu-status-bar class="page-component"></so-shu-status-bar>
+  <main>
+    <section class="deck" id="deck" aria-labelledby="deck-title">
+      <so-shu-lookbook-stage class="page-component"></so-shu-lookbook-stage>
+      <so-shu-dock class="page-component"></so-shu-dock>
+      <so-shu-look-controls class="page-component"></so-shu-look-controls>
+      <so-shu-focus-view class="page-component"></so-shu-focus-view>
+      <so-shu-product-slip class="page-component"></so-shu-product-slip>
+    </section>
+    <so-shu-story-section class="page-component"></so-shu-story-section>
+    <so-shu-product-ritual class="page-component"></so-shu-product-ritual>
+    <so-shu-site-footer class="page-component"></so-shu-site-footer>
+  </main>
+  <so-shu-toast class="toast" id="toast" role="status" aria-live="polite"></so-shu-toast>
+  <so-shu-cart-drawer></so-shu-cart-drawer>
+  <script src="catalog.js"></script>
+  <script src="components/status-bar.js"></script>
+  <script src="components/lookbook-stage.js"></script>
+  <script src="components/dock.js"></script>
+  <script src="components/look-controls.js"></script>
+  <script src="components/focus-view.js"></script>
+  <script src="components/product-slip.js"></script>
+  <script src="components/toast.js"></script>
+  <script src="components/size-picker.js"></script>
+  <script src="components/product-line.js"></script>
+  <script src="components/price-card.js"></script>
+  <script src="components/look-model.js"></script>
+  <script src="components/story-section.js"></script>
+  <script src="components/product-ritual.js"></script>
+  <script src="components/site-footer.js"></script>
+  <script src="components/cart-api.js"></script>
+  <script src="components/address-data.js"></script>
+  <script src="components/cart-drawer.js"></script>
+  <script src="components/i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

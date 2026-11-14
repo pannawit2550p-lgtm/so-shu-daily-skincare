@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "products": [
+    {
+      "id": "SHU-0804",
+      "slug": "cream-1-shu-0804",
+      "name": "DOSE WHITENING CREAM 9% ACTIVE",
+      "nameTh": "โดส ไวท์เทนนิ่ง ครีม 9% แอคทีฟ",
+      "description": "Whitening Cream · 9% Active",
+      "productDetails": {
+        "size": { "th": "100 กรัม", "en": "100 g" },
+        "summary": { "th": "ครีมบำรุงผิวหน้าสำหรับใช้เป็นประจำทุกวัน สูตร 9% Active ตามที่ระบุบนบรรจุภัณฑ์ ช่วยเติมความชุ่มชื้นและบำรุงให้ผิวแลดูเรียบเนียน กระจ่างใส และสีผิวดูสม่ำเสมอ", "en": "A daily facial cream for all skin types, with a 9% Active formula as stated on the packaging. It helps moisturize and nourish skin for a smoother, radiant, more even-looking complexion." },
+        "usage": { "th": "ทาครีมบนผิวหน้าที่สะอาดเป็นประจำ หลีกเลี่ยงบริเวณรอบดวงตา หากใช้ในตอนกลางวันควรทาครีมกันแดดร่วมด้วย", "en": "Apply regularly to clean facial skin. Avoid the eye area. For daytime use, apply sunscreen." },
+        "fdaNumber": "",
+        "sunscreenWarning": { "th": "สำหรับการใช้ช่วงกลางวัน แนะนำให้ใช้ผลิตภัณฑ์กันแดดตามคำแนะนำบนฉลาก", "en": "For daytime use, apply sunscreen according to its label directions." }
+      },
+      "category": "Skincare",
+      "price": {
+        "amount": 199,
+        "currency": "THB"
+      },
+      "images": {
+        "primary": "assets/so-shu-whitening-cream.png",
+        "ritual": "assets/so-shu-whitening-cream.png"
+      },
+      "presentation": {
+        "model": "cream-jar",
+        "labelCrop": { "x": 0.17, "y": 0.3, "width": 0.66, "height": 0.53 }
+      },
+      "formulaHighlights": [
+        { "id": "nine-percent-active", "name": "9% ACTIVE", "image": "assets/highlight-9-percent-active.jpg" },
+        { "id": "all-skin-types", "name": "FOR ALL SKIN TYPES", "image": "assets/highlight-all-skin-types.jpg" },
+        { "id": "daily-perfect-cream", "name": "DAILY PERFECT CREAM", "image": "assets/highlight-daily-perfect-cream.jpg" }
+      ],
+      "ingredients": [
+        { "id": "niacinamide", "name": "Niacinamide (Vitamin B3)", "nameTh": "ไนอะซินาไมด์ (วิตามินบี 3)", "image": "assets/ingredient-niacinamide.jpg", "description": { "th": "ช่วยบำรุงให้ผิวแลดูสม่ำเสมอ", "en": "Helps care for an even-looking complexion." } },
+        { "id": "alpha-arbutin", "name": "Alpha Arbutin", "nameTh": "อัลฟ่าอาร์บูติน", "image": "assets/ingredient-alpha-arbutin.jpg", "description": { "th": "ช่วยดูแลผิวให้แลดูกระจ่างใส", "en": "Helps maintain a radiant-looking complexion." } },
+        { "id": "vitamin-b5", "name": "Vitamin B5", "nameTh": "วิตามินบี 5", "image": "assets/ingredient-vitamin-b5.jpg", "description": { "th": "ช่วยเติมและคงความชุ่มชื้นให้ผิว", "en": "Helps hydrate and retain skin moisture." } },
+        { "id": "vitamin-e", "name": "Vitamin E", "nameTh": "วิตามินอี", "image": "assets/ingredient-vitamin-e.jpg", "description": { "th": "ช่วยบำรุงผิวและดูแลผิวจากอนุมูลอิสระ", "en": "Helps nourish skin and care for it from free-radical damage." } },
+        { "id": "mineral-oil", "name": "Mineral Oil", "nameTh": "มิเนอรัลออยล์", "image": "assets/ingredient-mineral-oil.jpg", "description": { "th": "ช่วยลดการสูญเสียความชุ่มชื้นจากผิว", "en": "Helps reduce moisture loss from skin." } }
+      ],
+      "variants": [
+        {
+          "id": "SHU-0804-V01",
+          "sku": "SHU-0804-ONESIZE",
+          "label": "One size",
+          "attributes": {},
+          "active": true
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "SHU-0805",
+      "slug": "cream-2-shu-0805",
+      "name": "WHITENING GLASSY LOTION EX",
+      "nameTh": "ไวท์เทนนิ่ง กลาสซี่ โลชั่น EX",
+      "description": "Whitening Glassy Lotion EX",
+      "productDetails": {
+        "size": { "th": "รอข้อมูลจากผู้ผลิต", "en": "Awaiting manufacturer details" },
+        "summary": { "th": "โลชั่นบำรุงผิวกายสูตรผสาน Rose Water และสารบำรุงผิวหลายชนิด ช่วยเติมความชุ่มชื้น พร้อมดูแลให้ผิวแลดูเรียบเนียน กระจ่างใส และสีผิวดูสม่ำเสมอ เหมาะสำหรับใช้เป็นประจำ", "en": "A body lotion combining Rose Water with skin-conditioning ingredients. It helps moisturize and care for skin so it looks smooth, radiant, and more even-toned. Suitable for regular use as part of a skincare routine, with a convenient pump bottle." },
+        "usage": { "th": "ใช้ตามคำแนะนำบนฉลากบนผิวที่สะอาด หลีกเลี่ยงบริเวณรอบดวงตา และทดสอบการแพ้เฉพาะจุดก่อนใช้", "en": "Use as directed on the label on clean skin. Avoid the eye area and patch test before use." },
+        "fdaNumber": "",
+        "sunscreenWarning": { "th": "สำหรับการใช้ช่วงกลางวัน แนะนำให้ใช้ผลิตภัณฑ์กันแดดตามคำแนะนำบนฉลาก", "en": "For daytime use, apply sunscreen according to its label directions." }
+      },
+      "category": "Skincare",
+      "price": {
+        "amount": 199,
+        "currency": "THB"
+      },
+      "images": {
+        "primary": "assets/so-shu-whitening-glassy-lotion.png",
+        "ritual": "assets/so-shu-whitening-glassy-lotion-3d.png"
+      },
+      "ingredients": [
+        { "id": "rosa-damascena-flower-water", "name": "Rosa Damascena Flower Water", "nameTh": "น้ำดอกกุหลาบโรซา ดามัสเซนา", "image": "assets/ingredient-rosa-damascena.jpg" },
+        { "id": "alpha-arbutin", "name": "Alpha Arbutin", "nameTh": "อัลฟ่าอาร์บูติน", "image": "assets/ingredient-alpha-arbutin.jpg" },
+        { "id": "niacinamide", "name": "Niacinamide", "nameTh": "ไนอะซินาไมด์", "image": "assets/ingredient-niacinamide.jpg" },
+        { "id": "kojic-acid", "name": "Kojic Acid", "nameTh": "โคจิกแอซิด", "image": "assets/ingredient-kojic-acid.jpg" },
+        { "id": "vitamin-c", "name": "Vitamin C", "nameTh": "วิตามินซี", "image": "assets/ingredient-vitamin-c.jpg" },
+        { "id": "vitamin-e", "name": "Vitamin E", "nameTh": "วิตามินอี" }
+      ],
+      "presentation": {
+        "model": "pump-bottle",
+        "labelCrop": { "x": 0.25, "y": 0.313, "width": 0.5, "height": 0.624 }
+      },
+      "variants": [
+        {
+          "id": "SHU-0805-V01",
+          "sku": "SHU-0805-ONESIZE",
+          "label": "One size",
+          "attributes": {},
+          "active": true
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "SHU-0806",
+      "slug": "cream-3-shu-0806",
+      "name": "ROSA DAMASCENA CULTURE EXTRACT HYALURONIC ACID WHITENING LOTION",
+      "nameTh": "โลชั่นบำรุงผิวกาย โรซา ดามัสเซนา ไฮยาลูรอนิก แอซิด",
+      "description": "Culture Extract Whitening Lotion",
+      "productDetails": {
+        "size": { "th": "250 มล.", "en": "250 mL" },
+        "summary": {
+          "th": "โลชั่นเนื้อบำรุงผิวกาย สูตรสารสกัดดอกไม้ ผสาน Rose Water และส่วนผสมที่ระบุบนฉลาก ช่วยบำรุงผิวให้ดูชุ่มชื้น เรียบเนียน และกระจ่างใสขึ้นเมื่อใช้เป็นประจำ",
+          "en": "A flower-extract body lotion blended with Rose Water and ingredients listed on the label. With regular use, it helps skin look hydrated, smooth, and more radiant."
+        },
+        "usage": { "th": "ลูบไล้ให้ทั่วผิวกายหลังอาบน้ำ วันละ 2 ครั้ง เช้าและเย็น", "en": "Smooth over the body after bathing twice daily, morning and evening." },
+        "fdaNumber": "",
+        "sunscreenWarning": {
+          "th": "ควรใช้ครีมกันแดดเมื่อต้องออกแดด และทดลองใช้บริเวณเล็ก ๆ ก่อน หากเกิดอาการระคายเคืองให้หยุดใช้",
+          "en": "Use sunscreen when exposed to sunlight. Test on a small area first; discontinue use if irritation occurs."
+        }
+      },
+      "category": "Skincare",
+      "price": {
+        "amount": 199,
+        "currency": "THB"
+      },
+      "images": {
+        "primary": "assets/bottle.png",
+        "ritual": "assets/bottle.png"
+      },
+      "presentation": {
+        "model": "pump-bottle",
+        "labelCrop": { "x": 0.25, "y": 0.42, "width": 0.5, "height": 0.52 }
+      },
+      "ingredients": [
+        { "id": "rosa-damascena-culture-extract", "name": "Rosa Damascena Culture Extract", "nameTh": "สารสกัดจากดอกโรซา ดามัสเซนา", "image": "assets/ingredient-rosa-damascena.jpg" },
+        { "id": "alpha-arbutin", "name": "Alpha Arbutin", "nameTh": "อัลฟ่าอาร์บูติน", "image": "assets/ingredient-alpha-arbutin.jpg" },
+        { "id": "hyaluronic-acid", "name": "Hyaluronic Acid", "nameTh": "ไฮยาลูรอนิกแอซิด", "image": "assets/ingredient-hyaluronic-acid.jpg" },
+        { "id": "niacinamide", "name": "Vitamin B3 (Niacinamide)", "nameTh": "วิตามินบี 3 (ไนอะซินาไมด์)", "image": "assets/ingredient-niacinamide.jpg" },
+        { "id": "kojic-acid", "name": "Kojic Acid", "nameTh": "โคจิกแอซิด", "image": "assets/ingredient-kojic-acid.jpg" },
+        { "id": "vitamin-c", "name": "Vitamin C", "nameTh": "วิตามินซี", "image": "assets/ingredient-vitamin-c.jpg" }
+      ],
+      "variants": [
+        {
+          "id": "SHU-0806-V01",
+          "sku": "SHU002",
+          "label": "One size",
+          "attributes": {},
+          "active": true
+        }
+      ],
+      "active": true
+    }
+  ]
+}
